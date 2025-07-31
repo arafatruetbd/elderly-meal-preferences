@@ -95,7 +95,7 @@ const AdditionalConsiderations = () => {
           {submittedTexts.map((text, idx) => (
             <p
               key={idx}
-              className="text-gray-900 whitespace-pre-wrap border-b border-gray-300 pb-2 last:border-none"
+              className="text-gray-900 whitespace-pre-wrap border-b border-gray-300 pb-2 last:border-none break-words"
             >
               {text}
             </p>
