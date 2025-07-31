@@ -67,7 +67,7 @@ const FoodAllergies = () => {
   // JSX for the quick add buttons section
   const quickAddButtons = (
     <div className="mb-8 mt-6">
-      <h4 className="text-white font-semibold mb-3">
+      <h4 className="text-gray-800 font-semibold mb-3">
         Quick Add Common Allergies:
       </h4>
       <div className="flex flex-wrap gap-3">
@@ -75,7 +75,7 @@ const FoodAllergies = () => {
           <button
             key={item}
             onClick={() => quickAddAllergy(item)}
-            className="px-4 py-1 text-sm rounded-full bg-white text-pink-600 font-medium border border-pink-300 shadow hover:bg-pink-50 transition cursor-pointer"
+            className="px-4 py-1 text-sm rounded-full bg-white text-gray-800 font-medium border border-gray-300 shadow hover:bg-gray-100 transition cursor-pointer"
           >
             {item}
           </button>
@@ -109,8 +109,6 @@ const FoodAllergies = () => {
         onRemove={(index) =>
           setAllergies((prev) => prev.filter((_, i) => i !== index))
         }
-        // Button styling for add button inside FoodSection
-        addButtonClass="bg-gradient-to-r from-pink-400 to-red-500"
         // Placeholder text for the input inside FoodSection
         placeholder="Enter allergy/intolerance"
         // Render function for individual allergy cards
@@ -122,10 +120,10 @@ const FoodAllergies = () => {
             onRemove={onRemove}
           />
         )}
-        // Styling for the FoodSection container
-        containerClassName="max-w-4xl mx-auto p-8 bg-gradient-to-br from-red-400 to-pink-500 rounded-2xl shadow-2xl relative"
-        // Styling for the FoodSection title
-        titleClassName="text-4xl font-bold text-white mb-10 text-center tracking-wide"
+        // Styling for the container div
+        containerClassName="max-w-4xl mx-auto p-8 bg-yellow-50 rounded-2xl shadow-2xl relative"
+        // Styling for the title text
+        titleClassName="text-4xl font-bold text-gray-800 mb-10 text-center tracking-wide"
         // Pass down selected severity to control category select inside FoodSection
         selectedCategory={selectedSeverity}
         // Handle category changes from FoodSection, ensuring correct typing

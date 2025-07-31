@@ -20,7 +20,7 @@ const FavoriteFoods = () => {
   return (
     // Use generic FoodSection component to manage the list
     <FoodSection<FoodItem>
-      title="My Favorite Foods" // Section title
+      title="Favorite Foods" // Section title
       categories={CATEGORIES} // Categories for selection in add/edit forms
       items={items} // Current list of favorite foods
       // Functions to get/set category and name properties on items
@@ -31,8 +31,6 @@ const FavoriteFoods = () => {
       })}
       getName={(item) => item.foodName}
       setName={(item, name) => ({ ...item, foodName: name })}
-      // Styling for the add button
-      addButtonClass="bg-gradient-to-r from-green-400 to-cyan-500"
       placeholder="Enter food item" // Placeholder text for input
       // Callback when a new item is added: append to list
       onAdd={(item) => setItems((prev) => [...prev, item])}
@@ -58,9 +56,9 @@ const FavoriteFoods = () => {
         />
       )}
       // Styling for the container div
-      containerClassName="max-w-4xl mx-auto p-8 bg-gradient-to-br from-green-400 to-cyan-500 rounded-2xl shadow-2xl relative"
+      containerClassName="max-w-4xl mx-auto p-8 bg-yellow-50 rounded-2xl shadow-2xl relative"
       // Styling for the title text
-      titleClassName="text-4xl font-bold text-white mb-10 text-center tracking-wide"
+      titleClassName="text-4xl font-bold text-gray-800 mb-10 text-center tracking-wide"
     />
   );
 };

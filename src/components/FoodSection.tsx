@@ -13,7 +13,6 @@ interface FoodSectionProps<T> {
   onAdd: (item: T) => void; // Callback to add a new item
   onEdit: (index: number, item: T) => void; // Callback to edit an existing item by index
   onRemove: (index: number) => void; // Callback to remove an item by index
-  addButtonClass: string; // CSS classes to style the Add button
   placeholder: string; // Placeholder text for the input field
   renderCard: (
     item: T,
@@ -36,7 +35,6 @@ function FoodSection<T>({
   setCategory,
   getName,
   setName,
-  addButtonClass,
   placeholder,
   onAdd,
   onEdit,
@@ -132,7 +130,6 @@ function FoodSection<T>({
         onAdd={handleAdd}
         placeholder={placeholder}
         buttonLabel="Add"
-        buttonClassName={addButtonClass}
       />
 
       {/* Optional children (e.g., quick add buttons) */}
@@ -140,35 +137,38 @@ function FoodSection<T>({
 
       {/* Render items grouped by category */}
       {categories.map((category) => {
-        // Filter items by current category
         const filteredItems = items
           .map((item, idx) => ({ item, idx }))
           .filter(({ item }) => getCategory(item) === category);
 
+        if (filteredItems.length === 0) return null;
+
+        const categoriesWithItems = categories.filter((cat) =>
+          items.some((item) => getCategory(item) === cat)
+        );
+        const isLastCategory =
+          category === categoriesWithItems[categoriesWithItems.length - 1];
+
         return (
-          <div key={category} className="mb-12">
-            <h3 className="text-2xl font-bold text-white mb-6 border-b border-white/30 pb-1">
+          <div key={category} className="mb-2">
+            <h3 className="text-2xl font-bold text-gray-800 mb-2 border-b border-white/30 pb-1">
               {category}
             </h3>
 
-            {/* Show placeholder text if no items */}
-            {filteredItems.length === 0 ? (
-              <p className="text-white text-opacity-80 italic">
-                No items added yet.
-              </p>
-            ) : (
-              // Grid of item cards for this category
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {filteredItems.map(({ item, idx }) =>
-                  renderCard(
-                    item,
-                    idx,
-                    () => openEditModal(idx),
-                    () => onRemove(idx)
-                  )
-                )}
-              </div>
-            )}
+            <div
+              className={`grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ${
+                isLastCategory ? "" : "border-b border-gray-300 pb-6"
+              }`}
+            >
+              {filteredItems.map(({ item, idx }) =>
+                renderCard(
+                  item,
+                  idx,
+                  () => openEditModal(idx),
+                  () => onRemove(idx)
+                )
+              )}
+            </div>
           </div>
         );
       })}

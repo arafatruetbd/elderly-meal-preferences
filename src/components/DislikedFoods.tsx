@@ -35,8 +35,6 @@ const DislikedFoods = () => {
       getName={(item) => item.foodName}
       // Setter to update an item's food name
       setName={(item, name) => ({ ...item, foodName: name })}
-      // CSS classes for styling the add button within FoodSection
-      addButtonClass="bg-gradient-to-r from-red-500 to-orange-500"
       // Placeholder text for the input field
       placeholder="Enter food item"
       // Handler to add a new disliked food item to the list
@@ -62,10 +60,10 @@ const DislikedFoods = () => {
           onRemove={onRemove}
         />
       )}
-      // Styling for the container wrapping this FoodSection
-      containerClassName="max-w-4xl mx-auto p-8 bg-gradient-to-br from-red-400 to-yellow-500 rounded-2xl shadow-2xl relative"
+       // Styling for the container div
+      containerClassName="max-w-4xl mx-auto p-8 bg-yellow-50 rounded-2xl shadow-2xl relative"
       // Styling for the title text
-      titleClassName="text-4xl font-bold text-white mb-10 text-center tracking-wide"
+      titleClassName="text-4xl font-bold text-gray-800 mb-10 text-center tracking-wide"
     />
   );
 };
