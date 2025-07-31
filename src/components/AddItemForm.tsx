@@ -1,5 +1,3 @@
-import React from "react";
-
 type AddItemFormProps<T extends string> = {
   /** List of categories to select from (e.g. meal types, severity levels) */
   categories: readonly T[];

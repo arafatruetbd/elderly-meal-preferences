@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import FoodSection from "./FoodSection";
 import FoodItemCard from "./FoodItemCard";
 
@@ -10,7 +10,7 @@ type FoodCategory = (typeof CATEGORIES)[number];
 // Interface defining the shape of a food item
 interface FoodItem {
   category: FoodCategory; // Category of the food (e.g., Breakfast)
-  foodName: string;       // Name of the food item
+  foodName: string; // Name of the food item
 }
 
 const FavoriteFoods = () => {
@@ -21,8 +21,8 @@ const FavoriteFoods = () => {
     // Use generic FoodSection component to manage the list
     <FoodSection<FoodItem>
       title="My Favorite Foods" // Section title
-      categories={CATEGORIES}   // Categories for selection in add/edit forms
-      items={items}             // Current list of favorite foods
+      categories={CATEGORIES} // Categories for selection in add/edit forms
+      items={items} // Current list of favorite foods
       // Functions to get/set category and name properties on items
       getCategory={(item) => item.category}
       setCategory={(item, category) => ({
